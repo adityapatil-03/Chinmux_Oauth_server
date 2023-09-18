@@ -1,0 +1,556 @@
+$colors:(
+
+body-background-color: #FFF,
+material-input-border-bottom: 1px solid #757575,
+material-input-focus-border-bottom: 1px solid #757575,
+material-input-label-color: #999,
+material-input-focus-label-color: #d75a4a,
+material-input-bar-before-color: #d75a4a,
+material-input-icon-color: #ee3b33,
+material-input-text-color: #000,
+oval-button-background-color: #01579B,
+oval-button-color: #FFFFFF,
+progress-svg-path-color: #FFF,
+square-top-color: #d75a4a,
+square-bottom-color: #01579B,
+turbine-poll-polygon-color: #d75a4a,
+turbine-poll-circle-color: #d75a4a,
+turbine-poll-propeller-color: #d75a4a,
+turbine-poll-big-polygon-color: #d75a4a,
+turbine-poll-big-circle-color: #d75a4a,
+turbine-poll-big-propeller-color: #d75a4a,
+
+//THEME 2
+/*
+body-background-color:#F1F1F1,
+material-input-border-bottom:1px solid #757575,
+material-input-focus-border-bottom:1px solid #757575,
+material-input-label-color:#273043,
+material-input-focus-label-color:#273043,
+material-input-bar-before-color:#175676,
+material-input-icon-color:#175676,
+material-input-text-color:#000,
+oval-button-background-color:#175676,
+oval-button-color:#F1F1F1,
+progress-svg-path-color:#F1F1F1,
+square-top-color:#273043,
+square-bottom-color:#175676,
+turbine-poll-polygon-color:#d75a4a,
+turbine-poll-circle-color:#d75a4a,
+turbine-poll-propeller-color:#d75a4a,
+turbine-poll-big-polygon-color:#d75a4a,
+turbine-poll-big-circle-color:#d75a4a,
+turbine-poll-big-propeller-color:#d75a4a,
+*/
+//THEME 3
+/*
+body-background-color: #FAE3E3,
+material-input-border-bottom: 1px solid #6A9685,
+material-input-focus-border-bottom: 1px solid #A76571,
+material-input-label-color: #565264,
+material-input-focus-label-color: #565264,
+material-input-bar-before-color: #A76571,
+material-input-icon-color: #A76571,
+material-input-text-color: #000,
+oval-button-background-color: #A76571,
+oval-button-color: #F1F1F1,
+progress-svg-path-color: #F1F1F1,
+square-top-color: #A76571,
+square-bottom-color: #565264,
+turbine-poll-polygon-color: #A76571,
+turbine-poll-circle-color: #A76571,
+turbine-poll-propeller-color: #A76571,
+turbine-poll-big-polygon-color: #565264,
+turbine-poll-big-circle-color: #565264,
+turbine-poll-big-propeller-color: #565264,*/
+);
+
+@mixin animation ($delay, $duration, $animation, $fill-mode, $iteration-count, $timing-function) {
+
+             -webkit-animation-name: $animation;
+            -webkit-animation-delay: $delay;
+         -webkit-animation-duration: $duration;
+        -webkit-animation-fill-mode: $fill-mode;
+  -webkit-animation-iteration-count: $iteration-count;
+  -webkit-animation-timing-function: $timing-function;
+
+             -moz-animation-name: $animation;
+            -moz-animation-delay: $delay;
+         -moz-animation-duration: $duration;
+        -moz-animation-fill-mode: $fill-mode;
+  -moz-animation-iteration-count: $iteration-count;
+  -moz-animation-timing-function: $timing-function;
+
+             animation-name: $animation;
+            animation-delay: $delay;
+         animation-duration: $duration;
+        animation-fill-mode: $fill-mode;
+  animation-iteration-count: $iteration-count;
+  animation-timing-function: $timing-function;
+}
+
+
+.progress-svg {
+  width: 65px;
+  height: 65px;
+  margin-top: -20px;
+  path {
+    fill: map-get($colors,'progress-svg-path-color');
+  }
+}
+
+body {
+	background-color: map-get($colors,'body-background-color');
+}
+
+/* ********* INPUT *********** */
+
+@media screen and (min-width:1200px) {
+  html, body, app-root {
+    height: 100%;
+  }
+}
+
+
+.l-login {
+  transition: opacity .8s ease-in-out;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: map-get($colors,'body-background-color');
+  opacity: 1;
+  z-index: 100;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    &-logo {
+      width: 300px;
+      margin-bottom: 45px;
+    }
+
+    &__button {
+      max-height: 50px;
+      background-color: map-get($colors,'oval-button-background-color');
+      color: map-get($colors,'oval-button-color');
+      padding: 13px 10px;
+      border-radius: 30px;
+      font-size: 18px;
+      width: 90%;
+      margin: 0 auto;
+      border: none;
+      outline: none;
+      fill: transparent;
+      transition: all .5s;
+      box-shadow: 0px 1px 11px 1px rgba(110, 106, 106, 0.8);
+
+      &:hover {
+        box-shadow: 0px 3px 13px 3px rgba(110, 106, 106, 0.8);
+      }
+    }
+
+  }
+
+  .square{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    border-radius: 30px;
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+
+    &.blue-dark {
+      background-color: map-get($colors,'square-bottom-color');
+    }
+
+    &.red {
+      background-color: map-get($colors,'square-top-color');
+    }
+
+    &.left{
+      &-bottom {
+        bottom: -40px;
+        left: -100px;
+        box-shadow: 1px 4px 25px rgba(0, 0, 0, 0.33);
+      }
+    }
+
+    &.top {
+      &-right {
+        top: -40px;
+        right: -100px;
+        box-shadow: -5px 4px 9px rgba(0, 0, 0, 0.31)
+      }
+    }
+  }
+
+  &__progress{
+    &-img{
+      height: 40px;
+      width: 40px;
+      animation-duration: 1.5s;
+      animation-delay: .7s;
+
+    }
+  }
+
+}
+
+/* ------- MATERIAL-INPUT ------- */
+.material-input {
+  &__group {
+    position: relative;
+    margin-bottom: 25px;
+
+    i {
+      position: absolute;
+      top: 6px;
+      left: 5px;
+      color: map-get($colors,'material-input-icon-color');
+      font-size: 23px;
+    }
+
+    &__error {
+      margin-top: 4px;
+      margin-left: 4px;
+      color: #D75A4A;
+      display: block;
+      text-align: left;
+    }
+
+    &__label {
+      font-size: 18px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+       color: map-get($colors,'material-input-label-color');
+
+       &.iconic {
+         left: 40px;
+       }
+    }
+
+    &__input {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: map-get($colors,'material-input-border-bottom');
+      background: transparent;
+      transition: all .7s;
+      -webkit-transition: all .5s;
+      color: map-get($colors,'material-input-text-color');
+
+      &.textarea {
+        resize: vertical;
+        overflow: auto;
+      }
+
+      &.iconic {
+        padding: 10px 10px 5px 40px;
+
+        &:focus {
+          &~ label {
+            top: -20px;
+            left: 5px;
+            color: #000;
+            font-size: 14px;
+
+            & ~ .material-input__group-bar:after {
+              width: 50%;
+            }
+
+            & ~ .material-input__group-bar:before {
+              width: 50%;
+            }
+          }
+
+        }
+      }
+
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid map-get($colors,'material-input-bar-before-color');
+
+        &~ label {
+          top: -20px;
+          font-size: 14px;
+
+        }
+
+        & ~ .material-input__group-bar:before {
+          width: 50%;
+        }
+
+        & ~ .material-input__group-bar:after {
+          width: 50%;
+        }
+
+      }
+    }
+
+    &-bar {
+      position: relative;
+      display: block;
+
+      &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        background: map-get($colors,'material-input-bar-before-color');
+        left: 50%;
+      }
+
+      &:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        background: map-get($colors,'material-input-bar-before-color');
+        right: 50%;
+      }
+    }
+
+    &__highlight {
+      position: absolute;
+      height: 60%;
+      width: 100px;
+      top: 25%;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+  }
+}
+
+.c-wind-turbine {
+  position: absolute;
+  bottom: 20px;
+  right: 100px;
+  height: 128px;
+  width:128px;
+
+  &.big {
+    position: absolute;
+    bottom: 20px;
+    right: 200px;
+    height: 128px;
+    width:128px;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__propeller {
+    width: 128px;
+    height: 128px;
+    @include animation(0, .9s, rotate, forwards, infinite, linear);
+
+    polyline {
+        stroke: map-get($colors,'turbine-poll-propeller-color');
+    }
+
+    &.big {
+      top: -32px;
+      position: absolute;
+      left: 25px;
+      polyline {
+        stroke: map-get($colors,'turbine-poll-big-propeller-color');
+      }
+    }
+
+  }
+
+  &__poll {
+    width: 150px;
+    height: 350px;
+    position: absolute;
+    top: -95px;
+    left: -10px;
+    polygon {
+      fill: map-get($colors,'turbine-poll-polygon-color');
+    }
+
+    circle {
+      fill: map-get($colors,'turbine-poll-circle-color');
+    }
+
+    &.big {
+      width: 200px;
+      height: 500px;
+      top: -195px;
+      polygon {
+        fill: map-get($colors,'turbine-poll-big-polygon-color');
+      }
+
+      circle {
+        fill: map-get($colors,'turbine-poll-big-circle-color');
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px){
+  .wind-turbine-parent {
+     visibility: hidden;
+  }
+}
+
+@media screen and (max-height: 800px){
+  .square{
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media screen and (max-height: 580px){
+  .square.top-right {
+	   top: -80px;
+  }
+
+   .square.left-bottom {
+	    bottom: -80px;
+   }
+}
+
+.circular-loader {
+  margin: -20px 5px;
+  fill: #009688;
+
+  &.speed {
+
+    &-slow {
+      -webkit-animation: spin .8s linear infinite;
+         -moz-animation: spin .8s linear infinite;
+              animation: spin .8s linear infinite;
+    }
+
+    &-normal {
+      -webkit-animation: spin .4s linear infinite;
+         -moz-animation: spin .4s linear infinite;
+          -ms-animation: spin .4s linear infinite;
+              animation: spin .4s linear infinite;
+    }
+
+    &-fast {
+      -webkit-animation: spin .2s linear infinite;
+         -moz-animation: spin .2s linear infinite;
+              animation: spin .2s linear infinite;
+    }
+  }
+}
+
+@mixin animation-mixin ($animation_name) {
+
+ @-webkit-keyframes #{$animation_name} {
+   @content;
+ }
+
+ @-moz-keyframes #{$animation_name} {
+   @content;
+ }
+
+ @keyframes #{$animation_name} {
+   @content;
+ }
+}
+
+@include animation-mixin (hu__hu__) {
+  0%{
+      left: -100px;
+  }
+
+  50% {
+      left: -80px;
+  }
+
+  100%{
+      left: -100px;
+  }
+}
+
+
+@include animation-mixin (hu__hu_r_) {
+  0%{
+      right: -100px;
+  }
+
+  50% {
+      right: -80px;
+  }
+
+  100%{
+      right: -100px;
+  }
+}
+
+@include animation-mixin (spin) {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@include animation-mixin (inputHighlighter) {
+  from {
+    background: map-get($colors,'inputhighlighter-background-color');
+  }
+
+  to 	{
+    width:0;
+    background: transparent;
+  }
+}
+
+@include animation-mixin (rotate) {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  50% {
+    transform: rotate(180deg);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+
+.hu_hu_animation {
+   @include animation(0, 2.5s, hu__hu__, forwards, infinite, ease-in-out);
+}
+
+.hu__hu_r_ {
+  @include animation(0, 2.5s, hu__hu__r_, forwards, infinite, ease-in-out);
+}

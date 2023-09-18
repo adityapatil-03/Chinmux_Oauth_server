@@ -1,4 +1,4 @@
-var express = require('express'),
+const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     OAuth2Server = require('oauth2-server'),
@@ -6,16 +6,33 @@ var express = require('express'),
     Response = OAuth2Server.Response;
 const cors = require('cors'); // Import the cors middleware
 
-var app = express();
+// Import connectDB function to connect Database
+const {connectDb} = require("./connectDB");
+const clientRoute = require("./routes/ClientRoute.js");
+
+const app = express();
 //sudo service mongod start
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(express.bodyParser({limit: '50mb'}));
 
+
 // Use cors middleware for the /oauth/token endpoint
 app.use('/oauth/token', cors());
 
-var mongoUri = 'mongodb://localhost:27017/oauth';
+// Replace with the Actual URI for the Database
+// const  mongoUri = 'mongodb://localhost:27017/oauth';
+const mongoUri = 'mongodb://127.0.0.1:27017/oauth?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.1'
+
+connectDb(mongoUri)
+    .then(()=>{
+        console.log("Database Connected");
+    })
+    .catch((err)=>{
+        console.log("Database Not Connected: ",err);
+    })
+
+
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true
@@ -30,8 +47,22 @@ app.oauth = new OAuth2Server({
 // App Routes
 app.all('/oauth/token', obtainToken);
 
+
+
+app.get("/",(req,res)=>{
+    return res.json({"message":"Default Page"});
+});
+
+app.use("/client",clientRoute);
+
+
+
+
+
+
+
 app.listen(3003, function() {
-    console.log("Server started on port 3000");
+    console.log("Server started on port 3003");
 });
 
 // Functions
