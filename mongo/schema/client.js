@@ -1,5 +1,7 @@
 module.exports = {
-	id: String,
+	// id: String,
+	email:String,
+	password:String,
 	clientId: String,
 	clientSecret: String,
 	grants: [String],

@@ -6,6 +6,7 @@ var clientModel = require('./mongo/model/client'),
 	tokenModel = require('./mongo/model/token'),
 	userModel = require('./mongo/model/user');
 
+
     // var loadExampleData = function() {
 
     //     var client1 = new clientModel({
@@ -98,6 +99,7 @@ var getClient = function(clientId, clientSecret, callback) {
             await fs.writeFile( "./images/" +username+ ".png", buf);
           })();
       
+        
         userModel.findOne({
             username: username,
             password: password
