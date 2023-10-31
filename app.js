@@ -75,6 +75,7 @@ function obtainToken(req, res) {
         .then(function(token) {
             // Set CORS headers for the response
             res.header('Access-Control-Allow-Origin', '*');
+            
             res.json(token);
         }).catch(function(err) {
             res.status(err.code || 500).json(err);
@@ -88,6 +89,7 @@ function authenticateRequest(req, res, next) {
     return app.oauth.authenticate(request, response)
         .then(function(token) {
             next();
+            
         }).catch(function(err) {
             res.status(err.code || 500).json(err);
         });
