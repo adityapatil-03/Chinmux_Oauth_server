@@ -40,7 +40,7 @@ const clientRegister = async(req,res)=>{
 
 const clientRegisterPage = async(req,res)=>{
     const publicPath = path.join(__dirname, '../public');
-    return res.sendFile(path.join(publicPath, 'Register.html'));
+    return res.sendFile(path.join(publicPath, 'ClientRegister.html'));
 }
 
 module.exports = {

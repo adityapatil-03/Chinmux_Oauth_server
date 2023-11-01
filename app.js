@@ -9,6 +9,7 @@ const cors = require('cors'); // Import the cors middleware
 // Import connectDB function to connect Database
 const {connectDb} = require("./connectDB");
 const clientRoute = require("./routes/ClientRoute.js");
+const userRoute = require("./routes/UserRoute");
 
 const app = express();
 //sudo service mongod start
@@ -54,6 +55,10 @@ app.get("/",(req,res)=>{
 });
 
 app.use("/client",clientRoute);
+app.use("/user",userRoute);
+
+
+
 
 
 
