@@ -17,6 +17,7 @@ const handleUserRegistration = async (req, res) => {
   let image_data = req.body.image_data; // Use 'let' for reassignment
   console.log("Name: ", name);
   console.log("Email: ", email);
+  
   var user = new userModel({
     username: email,
     password:"default"

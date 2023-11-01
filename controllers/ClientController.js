@@ -2,6 +2,7 @@ const clientModel = require('../mongo/model/client')
 const {v4:uuidv4} = require("uuid");
 const path = require('path');
 const bcrypt = require("bcrypt");
+
 const clientRegister = async(req,res)=>{
 
     
@@ -22,13 +23,18 @@ const clientRegister = async(req,res)=>{
         password = await bcrypt.hash(password, 10); // Await the hash operation
 
         // Store ClientId, SecretId, email, password into the Database using 'create' method
-        const registeredUser = await clientModel.create({
-            email,
-            password,
-            clientId,
-            clientSecret,
-            redirectUris: ["www.google.com"] // Assuming 'redirectUris' is an array in your schema
+      // await client1.save();
+        const registeredUser = new clientModel({
+          //  id: 'application',	// TODO: Needed by refresh_token grant, because there is a bug at line 103 in https://github.com/oauthjs/node-oauth2-server/blob/v3.0.1/lib/grant-types/refresh-token-grant-type.js (used client.id instead of client.clientId)
+            clientId: clientId,
+            clientSecret: clientSecret,
+            grants: [
+                'password',
+                'refresh_token'
+            ],
+            redirectUris: []
         });
+        await registeredUser.save();
         console.log("User Registered: ",registeredUser);
         // Display Success Message [ClientID and Secret ID]
         return res.status(200).json({ clientId, clientSecret });
