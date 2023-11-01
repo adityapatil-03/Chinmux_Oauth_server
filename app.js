@@ -16,7 +16,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(express.bodyParser({limit: '50mb'}));
-
+app.use("/client",clientRoute);
+app.use("/user",userRoute); 
 
 // Use cors middleware for the /oauth/token endpoint
 app.use('/oauth/token', cors());
@@ -54,8 +55,7 @@ app.get("/",(req,res)=>{
     return res.json({"message":"Default Page"});
 });
 
-app.use("/client",clientRoute);
-app.use("/user",userRoute);
+
 
 
 

@@ -9,7 +9,7 @@ new_image_directory = "./images"
 
 @app.route('/verify', methods=['POST'])
 def verify_images():
-    try:
+    try: 
         data = request.get_json()
         username = data['username']
 
