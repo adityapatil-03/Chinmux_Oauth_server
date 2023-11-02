@@ -5,6 +5,9 @@ const express = require('express'),
     Request = OAuth2Server.Request,
     Response = OAuth2Server.Response;
 const cors = require('cors'); // Import the cors middleware
+const path = require("path");
+
+
 
 // Import connectDB function to connect Database
 const {connectDb} = require("./connectDB");
@@ -12,6 +15,13 @@ const clientRoute = require("./routes/ClientRoute.js");
 const userRoute = require("./routes/UserRoute");
 
 const app = express();
+app.set('view engine', 'ejs');
+
+//CSS Configuration
+app.use(express.static(__dirname + '/public'));
+
+// app.use(express.static(__dirname + '/public'));
+
 //sudo service mongod start
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
