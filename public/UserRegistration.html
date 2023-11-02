@@ -3,26 +3,74 @@
 
 <head>
   <title>Capture Live Photo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 
 <body>
-  <h1>User Registration</h1>
-    <form action="/user/upload" method="post">
-      <input type="email" placeholder="Enter your Email" name="email" required><br>
-      <br>
+  <div class="container">
+
+    <div class="wrapper myform">
+      <div class="title"><span>User Registration</span></div>
+      <form method="post" action="/user/upload">
+        <div class="row">
+          <i class="fas fa-user"></i>
+          <input type="email" placeholder="Enter your Email" name="email" required>
+          <!-- <input type="email" placeholder="Email" name="email" required> -->
+        </div>
+        <br>
+        <div class="row">
+          <i class="fas fa-lock"></i>
+          <input type="text" placeholder="Enter your Name" name="name" required>
+          <!-- <input type="text" placeholder="Name" name="name" required> -->
+        </div>
+
+        <!-- Hidden  -->
+        <div class="row" hidden>
+          <!-- <i class="fas fa-lock"></i>
+          <input type="text" placeholder="Enter your Name" name="name" required>
+          <input type="text" placeholder="Name" name="name" required> -->
+          <input type="hidden" id="image-data" name="image_data" value="">
+        </div>
+
+        <br>
+
+        <div class="row button btn-group">
+          <button id="start-camera" type="button">Start Camera</button>
+          <button id="click-photo" type="button">Click Photo</button>
+
+
+          <button type="submit">Submit</button>
+          <!-- <input type="submit" value="Login"> -->
+        </div>
+
+      </form>
+    </div>
+    <div class="mycontainer">
+      <video id="video" width="320" height="240" autoplay></video>
+      <canvas id="canvas" width="320" height="240"></canvas>
+    </div>
+
+  </div>
+  <!-- New Code Ends Here -->
+
+  <!-- Old Code Starts -->
+  
+  <!-- <form action="/user/upload" method="post">
+      <input type="email" placeholder="Enter your Email" name="email" required><br><br>
       <input type="text" placeholder="Enter your Name" name="name" required><br>
       <br>
       <input type="hidden" id="image-data" name="image_data" value="">
-
-     
-      <button id="start-camera" type="button">Start Camera</button>
-      <video id="video" width="320" height="240" autoplay></video>
-      <button id="click-photo" type="button">Click Photo</button>
-      <canvas id="canvas" width="320" height="240"></canvas>
-
       <button type="submit">Submit</button>
 
-    </form>
+  <button id="start-camera" type="button">Start Camera</button> 
+  <video id="video" width="320" height="240" autoplay></video> 
+  <button id="click-photo" type="button">Click Photo</button> 
+  <canvas id="canvas" width="320" height="240"></canvas> 
+    </form> -->
+
+  <!-- Old Code Ends here  -->
+  </div>
 
   <script>
     let camera_button = document.querySelector("#start-camera");
@@ -45,7 +93,7 @@
 
       // data url of the image
       console.log(image_data_url);
-      console.log(typeof(image_data_url));
+      console.log(typeof (image_data_url));
     });
   </script>
 </body>
